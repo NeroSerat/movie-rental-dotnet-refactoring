@@ -1,0 +1,84 @@
+############################
+# Build results
+############################
+bin/
+obj/
+out/
+[Bb]uild/
+[Ll]og/
+[Ll]ogs/
+
+############################
+# .NET Core
+############################
+*.dll
+*.exe
+*.app
+*.so
+*.dylib
+*.pdb
+*.cache
+*.deps.json
+*.runtimeconfig.json
+
+# Auto-generated publish files
+publish/
+*.pubxml
+*.pubxml.user
+
+############################
+# Visual Studio files
+############################
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider / JetBrains
+.idea/
+
+############################
+# Visual Studio Code
+############################
+.vscode/
+
+############################
+# NuGet
+############################
+*.nupkg
+*.snupkg
+packages/
+.nuget/
+project.lock.json
+artifacts/
+
+############################
+# Test results
+############################
+TestResults/
+*.coverage
+*.coveragexml
+
+############################
+# OS files
+############################
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+############################
+# Others
+############################
+*.tmp
+*.temp
+*.log
+*.tlog
+*.vspscc
+*.vssscc
