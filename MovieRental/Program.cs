@@ -13,22 +13,30 @@ public class Program
     {
         try
         {
-            var movie = new Movie("Jaws", PriceCode.GetPriceCode(MovieRatingEnum.REGULAR));
-            var movie2 = new Movie("The Hangover", PriceCode.GetPriceCode(MovieRatingEnum.NEW_RELEASE));
+            var movie1 = new Movie("Jaws", PriceCode.GetPriceCode(MovieRatingEnum.REGULAR));
             var movie3 = new Movie("TMNT", PriceCode.GetPriceCode(MovieRatingEnum.CHILDREN));
-            var rental = new Rental(movie, 2);
+            var movie2 = new Movie("The Hangover", PriceCode.GetPriceCode(MovieRatingEnum.NEW_RELEASE));
+
+            var rental1 = new Rental(movie1, 2);
             var rental2 = new Rental(movie2, 6);
             var rental3 = new Rental(movie3, 1);
+
             var customer = new Customer("John Doe");
-            var customerHistory = new CustomerRentalHistory(customer, new List<Rental>() { rental, rental2, rental3 }, OutputFormatter.CreateOutputFormatter(false));
-            var customerHistory2 = new CustomerRentalHistory(customer, new List<Rental>() { rental, rental2, rental3 }, OutputFormatter.CreateOutputFormatter(true));
+            var textCustomerHistory = new CustomerRentalHistory(customer, new List<Rental>() { rental1, rental2, rental3 }, OutputFormatter.CreateOutputFormatter(false));
+            var htmlCustomerHistory = new CustomerRentalHistory(customer, new List<Rental>() { rental1, rental2, rental3 }, OutputFormatter.CreateOutputFormatter(true));
 
-            var statement = new Services.GenerateStatementService().CreateStatement(customerHistory);
-            var statement2 = new Services.GenerateStatementService().CreateStatement(customerHistory2);
+            Console.WriteLine("--------------------------------------------------------------");
+            //Statement 1 => text output
+            var textStatement = new Services.GenerateStatementService().CreateStatement(textCustomerHistory);
+            Console.WriteLine("Text statement: \n");
+            Console.WriteLine(textStatement);
+            Console.WriteLine("--------------------------------------------------------------");
 
-            Console.WriteLine(statement);
-            Console.WriteLine("\n");
-            Console.WriteLine(statement2);
+            //Statement 2 => html output
+            var htmlStatement = new Services.GenerateStatementService().CreateStatement(htmlCustomerHistory);
+            Console.WriteLine("HTML statement: \n");
+            Console.WriteLine(htmlStatement);
+            Console.WriteLine("--------------------------------------------------------------");
         }
         catch (Exception ex)
         {
