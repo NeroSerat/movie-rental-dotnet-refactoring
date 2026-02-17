@@ -104,7 +104,6 @@ public class TextOutputFormatter : IOutputFormatter
     public string FormatRentalsTable(IEnumerable<Rental> rentals)
         => string.Join("", rentals.Select(rental => FormatRentals(rental.Movie, rental.ComputeRentalAmount().ToString())));
 
-
     public string FormatRentals(Movie movie, string rentalAmount)
         => $"{TextOutputValues.TAB}" +
            $"{movie.Title} " +
@@ -123,12 +122,12 @@ public class TextOutputFormatter : IOutputFormatter
            $"{TextOutputValues.NEW_LINE}" +
            $"{TextOutputValues.NEW_LINE}";
 
-    public string FormatDaysRented(Rental rental) =>
-        rental.Movie.PriceCode switch
-        {
-            RegularPriceCode => $"Number of days rented for regular movie : {rental.ComputeDaysRentedForRegular(rental.ComputeRentalAmount())}\n",
-            NewReleasePriceCode => $"Number of days rented for this new release movie : {rental.ComputeDaysRentedForNewRelease(rental.ComputeRentalAmount())}\n",
-            ChildrenPriceCode => $"Number of days rented for this children movie : {rental.ComputeDaysRentedForChildren(rental.ComputeRentalAmount())}\n",
-            _ => "",
-        };
+    public string FormatDaysRented(Rental rental) 
+        => rental.Movie.PriceCode switch
+            {
+                RegularPriceCode => $"Number of days rented for regular movie : {rental.ComputeDaysRentedForRegular(rental.ComputeRentalAmount())}\n",
+                NewReleasePriceCode => $"Number of days rented for this new release movie : {rental.ComputeDaysRentedForNewRelease(rental.ComputeRentalAmount())}\n",
+                ChildrenPriceCode => $"Number of days rented for this children movie : {rental.ComputeDaysRentedForChildren(rental.ComputeRentalAmount())}\n",
+                _ => "",
+            };
 }
